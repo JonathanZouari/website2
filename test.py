@@ -1,2 +1,75 @@
-print("Hello, World!")
-print(f"my first_name is {first_name}")
+def print_board(board):
+    print("---------")
+    for row in board:
+        print("|", " ".join(row), "|")
+    print("---------")
+
+
+def check_win(board, player):
+    # Check rows
+    for row in board:
+        if all(spot == player for spot in row):
+            return True
+
+    # Check columns
+    for col in range(3):
+        if all(board[row][col] == player for row in range(3)):
+            return True
+
+    # Check diagonals
+    if all(board[i][i] == player for i in range(3)):
+        return True
+    if all(board[i][2 - i] == player for i in range(3)):
+        return True
+
+    return False
+
+
+def check_draw(board):
+    return all(cell != ' ' for row in board for cell in row)
+
+
+def get_move(board):
+    while True:
+        try:
+            coords = input("Enter your move as row and column (e.g., 1 3): ").strip().split()
+            if len(coords) != 2:
+                print("Please enter two numbers.")
+                continue
+            row, col = int(coords[0]) - 1, int(coords[1]) - 1
+            if row not in range(3) or col not in range(3):
+                print("Coordinates must be from 1 to 3.")
+                continue
+            if board[row][col] != ' ':
+                print("Cell already taken. Try again.")
+                continue
+            return row, col
+        except ValueError:
+            print("Invalid input. Please enter two numbers.")
+
+
+def play_game():
+    board = [[' ' for _ in range(3)] for _ in range(3)]
+    current_player = 'X'
+    print("Welcome to Tic Tac Toe!")
+    print_board(board)
+
+    while True:
+        print(f"Player {current_player}'s turn.")
+        row, col = get_move(board)
+        board[row][col] = current_player
+        print_board(board)
+
+        if check_win(board, current_player):
+            print(f"Player {current_player} wins!")
+            break
+        elif check_draw(board):
+            print("It's a draw!")
+            break
+        else:
+            current_player = 'O' if current_player == 'X' else 'X'
+
+
+if __name__ == "__main__":
+    play_game()
+
