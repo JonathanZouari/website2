@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>איקס עיגול</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="hero">
+        <p class="eyebrow">משחק לשניים או מול המחשב</p>
+        <h1>איקס עיגול</h1>
+      </header>
+
+      <section class="panel" aria-label="הגדרות משחק">
+        <div class="mode-row">
+          <button class="chip is-active" data-mode="pvp" type="button">שני שחקנים</button>
+          <button class="chip" data-mode="cpu" type="button">מול מחשב</button>
+        </div>
+        <div class="difficulty-row" hidden>
+          <span>רמת מחשב</span>
+          <button class="chip is-active" data-difficulty="easy" type="button">קל</button>
+          <button class="chip" data-difficulty="hard" type="button">קשה</button>
+        </div>
+      </section>
+
+      <section class="scoreboard" aria-live="polite">
+        <div class="score-card" data-player="X">
+          <span class="mark mark-x">X</span>
+          <strong id="score-x">0</strong>
+          <span id="label-x">שחקן X</span>
+        </div>
+        <div class="score-card">
+          <span class="mark">=</span>
+          <strong id="score-draw">0</strong>
+          <span>תיקו</span>
+        </div>
+        <div class="score-card" data-player="O">
+          <span class="mark mark-o">O</span>
+          <strong id="score-o">0</strong>
+          <span id="label-o">שחקן O</span>
+        </div>
+      </section>
+
+      <p class="status" id="status">תור של X</p>
+
+      <div class="board" id="board" role="grid" aria-label="לוח איקס עיגול">
+        <button class="cell" data-index="0" role="gridcell" aria-label="משבצת 1"><span class="mark-text"></span></button>
+        <button class="cell" data-index="1" role="gridcell" aria-label="משבצת 2"><span class="mark-text"></span></button>
+        <button class="cell" data-index="2" role="gridcell" aria-label="משבצת 3"><span class="mark-text"></span></button>
+        <button class="cell" data-index="3" role="gridcell" aria-label="משבצת 4"><span class="mark-text"></span></button>
+        <button class="cell" data-index="4" role="gridcell" aria-label="משבצת 5"><span class="mark-text"></span></button>
+        <button class="cell" data-index="5" role="gridcell" aria-label="משבצת 6"><span class="mark-text"></span></button>
+        <button class="cell" data-index="6" role="gridcell" aria-label="משבצת 7"><span class="mark-text"></span></button>
+        <button class="cell" data-index="7" role="gridcell" aria-label="משבצת 8"><span class="mark-text"></span></button>
+        <button class="cell" data-index="8" role="gridcell" aria-label="משבצת 9"><span class="mark-text"></span></button>
+      </div>
+
+      <div class="actions">
+        <button class="btn primary" id="new-round" type="button">סיבוב חדש</button>
+        <button class="btn" id="reset-scores" type="button">איפוס ניקוד</button>
+      </div>
+    </main>
+    <script src="game.js"></script>
+  </body>
+</html>

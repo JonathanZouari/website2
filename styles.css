@@ -1,0 +1,196 @@
+:root {
+  --ink: #1c1914;
+  --paper: #f4ead6;
+  --board: #2a2318;
+  --line: #d9c7a2;
+  --x: #1f6f8b;
+  --o: #c4492c;
+  --accent: #e3a72f;
+  --muted: #6f6454;
+  --shadow: 0 24px 50px rgba(28, 25, 20, 0.22);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  font-family: Rubik, "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at top right, rgba(227, 167, 47, 0.28), transparent 32%),
+    radial-gradient(circle at bottom left, rgba(31, 111, 139, 0.18), transparent 36%),
+    var(--paper);
+}
+
+.app {
+  width: min(440px, calc(100% - 24px));
+  margin: 16px auto 28px;
+  display: grid;
+  gap: 12px;
+}
+
+.hero h1 {
+  margin: 4px 0 0;
+  font-family: Fredoka, Rubik, sans-serif;
+  font-size: clamp(2rem, 7vw, 2.7rem);
+  letter-spacing: 0.02em;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.panel,
+.scoreboard,
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.mode-row,
+.difficulty-row,
+.actions {
+  width: 100%;
+}
+
+.difficulty-row {
+  align-items: center;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.chip,
+.btn {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  border-radius: 999px;
+  padding: 10px 16px;
+  background: white;
+  color: var(--ink);
+  box-shadow: 0 1px 0 rgba(28, 25, 20, 0.08);
+}
+
+.chip.is-active,
+.btn.primary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.scoreboard {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.score-card {
+  background: white;
+  border-radius: 18px;
+  padding: 10px 8px;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.score-card strong {
+  display: block;
+  font-size: 1.6rem;
+  margin: 2px 0;
+}
+
+.score-card span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.mark {
+  font-family: Fredoka, sans-serif;
+  font-weight: 700;
+}
+
+.mark-x {
+  color: var(--x);
+}
+
+.mark-o {
+  color: var(--o);
+}
+
+.status {
+  margin: 0;
+  min-height: 1.4em;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: min(100%, 58vmin);
+  margin-inline: auto;
+  padding: 12px;
+  background: var(--board);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+}
+
+.cell {
+  aspect-ratio: 1;
+  border: 0;
+  border-radius: 16px;
+  background: #3a3124;
+  color: var(--line);
+  font-family: Fredoka, sans-serif;
+  font-size: clamp(2rem, 8vw, 3.2rem);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.cell:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background: #463b2c;
+}
+
+.cell:disabled {
+  cursor: default;
+}
+
+.cell.x {
+  color: #8ed4ea;
+}
+
+.cell.o {
+  color: #f3a08c;
+}
+
+.cell.win {
+  background: #e3a72f;
+  color: var(--ink);
+}
+
+.cell:focus-visible,
+.chip:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+@media (max-width: 520px) {
+  .app {
+    margin-top: 18px;
+  }
+
+  .score-card span {
+    font-size: 0.78rem;
+  }
+}
