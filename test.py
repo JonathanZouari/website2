@@ -58,5 +58,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    print("game over")
-    
+    print("game over2")
