@@ -26,6 +26,13 @@ def is_full(board):
             return False
     return True
 
+def is_even(number):
+    flag = False
+    if number % 2 == 0:
+        flag = True
+    return flag
+
+    
 def main():
     board = [[' ' for _ in range(3)] for _ in range(3)]
     current_player = 'X'
