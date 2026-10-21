@@ -58,3 +58,4 @@ def tic_tac_toe():
 
 # To play the game, uncomment the next line:
 # tic_tac_toe()
+print("hi")
