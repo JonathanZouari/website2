@@ -1,3 +1,5 @@
+def welcome_msg(text):
+    print('hello user')
 def print_board(board):
     print("Current board:")
     print("  0 1 2")
