@@ -1,24 +1,3 @@
-def print_board(board):
-    print("Current board:")
-    print("  0 1 2")
-    for i, row in enumerate(board):
-        print(f"{i} {' '.join(row)}")
-
-def check_winner(board):
-    # check rows
-    for row in board:
-        if row[0] == row[1] == row[2] != ' ':
-            return row[0]
-    # check columns
-    for col in range(3):
-        if board[0][col] == board[1][col] == board[2][col] != ' ':
-            return board[0][col]
-    # check diagonals
-    if board[0][0] == board[1][1] == board[2][2] != ' ':
-        return board[0][0]
-    if board[0][2] == board[1][1] == board[2][0] != ' ':
-        return board[0][2]
-    return None
 
 def is_full(board):
     for row in board:
